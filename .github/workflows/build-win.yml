@@ -7,30 +7,30 @@ jobs:
 
     strategy:
       matrix:
-        arch:
-          - x86
-          - x64
-        debug:
-          - debug
-          - release
+        arch: [ amd64, amd64_x86, amd64_arm, amd64_arm64 ]
+        vs: [ 16.11, 17.4 ]
         include:
           - arch: x86
             subsys: "5.01"
-          - arch: x64
+          - arch: amd64
             subsys: "5.02"
+          - arch: amd64_arm
+            subsys: "6.02"
+          - arch: amd64_arm64
+            subsys: "6.02"
     steps:
       - uses: actions/checkout@v2
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.3
         with:
-          vs-version: 16.11
+          vs-version: ${{ matrix.vs }}
 
       - name: Enable Developer Command Prompt
         uses: ilammy/msvc-dev-cmd@v1.12.0
         with:
           arch: ${{ matrix.arch }}
-          toolset: 16.0
+          toolset: ${{ matrix.vs }}
 
       - name: Compile ${{ matrix.arch }}
         shell: cmd
