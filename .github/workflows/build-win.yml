@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         arch: [ amd64, amd64_x86, amd64_arm, amd64_arm64 ]
-        vs: [ 16.11, 17.4 ]
+        vs: [ 16.11 ]
         include:
           - arch: x86
             subsys: "5.01"
@@ -30,6 +30,7 @@ jobs:
         uses: ilammy/msvc-dev-cmd@v1.12.0
         with:
           arch: ${{ matrix.arch }}
+          toolset: 16.0
 
       - name: Compile ${{ matrix.arch }}
         shell: cmd
