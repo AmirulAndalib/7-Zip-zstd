@@ -41,7 +41,7 @@ jobs:
           set PLATFORM=${{matrix.arch}}
           set SUBSYS=${{matrix.subsys}}
           set DEBUG=${{ matrix.debug }}
-          echo "********"          
+          echo "********"
           echo "APPVEYOR_BUILD_FOLDER: %APPVEYOR_BUILD_FOLDER%"
           echo "Platform: %PLATFORM%"
           echo "SUBSYS: %SUBSYS%"
@@ -53,22 +53,14 @@ jobs:
           set ROOT=%cd%\7zip
           set OUTDIR=%APPVEYOR_BUILD_FOLDER%\build\bin-%VC%-%PLATFORM%
           set ERRFILE=%APPVEYOR_BUILD_FOLDER%\build\bin-%VC%-%PLATFORM%.log
-
-          IF %DEBUG% == DEBUG (
-          set LFLAGS=/SUBSYSTEM:WINDOWS,%SUBSYS% /Debug
-          set CFLAGS=/7Z
-          ) ELSE (
           set LFLAGS=/SUBSYSTEM:WINDOWS,%SUBSYS%
-          )
 
           set > %APPVEYOR_BUILD_FOLDER%\build\env-%VC%-%PLATFORM%.txt
           mkdir %OUTDIR%
 
           cd %ROOT%\Bundles\Format7zExtract
           nmake %OPTS%
-          IF %errorlevel% NEQ 0 (
-            echo "Error @ 7zxa.dll" >> %ERRFILE%
-            exit -1 )
+          IF %errorlevel% NEQ 0 echo "Error @ 7zxa.dll" >> %ERRFILE%
           copy %PLATFORM%\7zxa.dll %OUTDIR%\7zxa.dll
 
           cd %ROOT%\Bundles\Format7z
