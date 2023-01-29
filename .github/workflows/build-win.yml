@@ -30,7 +30,6 @@ jobs:
         uses: ilammy/msvc-dev-cmd@v1.12.0
         with:
           arch: ${{ matrix.arch }}
-          toolset: ${{ matrix.vs }}
 
       - name: Compile ${{ matrix.arch }}
         shell: cmd
