@@ -195,6 +195,11 @@ LIZARD_OBJS = \
   $O/lizard_compress.obj \
   $O/lizard_decompress.obj \
   $O/lizard_frame.obj \
+  $O\entropy_common.obj \
+  $O\fse_compress.obj \
+  $O\fse_decompress.obj \
+  $O\huf_compress.obj \
+  $O\huf_decompress.obj \
 
 LZ4_OBJS = \
   $O\lz4.obj \

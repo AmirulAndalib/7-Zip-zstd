@@ -22,19 +22,16 @@ COMPRESS_OBJS = $(COMPRESS_OBJS) \
   $O\LizardRegister.obj \
 
 LIZARD_OBJS = \
-  $O/lizard_compress.obj \
-  $O/lizard_decompress.obj \
-  $O/lizard_frame.obj \
-
-ZSTD_OBJS = \
-  $O\debug.obj \
+  $O\lizard_compress.obj \
+  $O\lizard_decompress.obj \
+  $O\lizard_frame.obj \
   $O\entropy_common.obj \
-  $O\error_private.obj \
   $O\fse_compress.obj \
   $O\fse_decompress.obj \
-  $O\hist.obj \
   $O\huf_compress.obj \
   $O\huf_decompress.obj \
+
+ZSTD_OBJS = \
   $O\xxhash.obj \
 
 ZSTDMT_OBJS = \

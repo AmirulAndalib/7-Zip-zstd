@@ -95,7 +95,6 @@ AR_COMMON_OBJS = \
   $O\OutStreamWithCRC.obj \
   $O\ParseProperties.obj \
 
-
 7Z_OBJS = \
   $O\7zCompressionMode.obj \
   $O\7zDecode.obj \
@@ -137,7 +136,6 @@ ZIP_OBJS = \
   $O\ZipOut.obj \
   $O\ZipUpdate.obj \
   $O\ZipRegister.obj \
-
 
 COMPRESS_OBJS = \
   $O\Bcj2Coder.obj \
@@ -273,9 +271,14 @@ BROTLI_OBJS = \
   $O/br_utf8_util.obj \
 
 LIZARD_OBJS = \
-  $O/lizard_compress.obj \
-  $O/lizard_decompress.obj \
-  $O/lizard_frame.obj \
+  $O\lizard_compress.obj \
+  $O\lizard_decompress.obj \
+  $O\lizard_frame.obj \
+  $O\entropy_common.obj \
+  $O\fse_compress.obj \
+  $O\fse_decompress.obj \
+  $O\huf_compress.obj \
+  $O\huf_decompress.obj \
 
 LZ4_OBJS = \
   $O\lz4.obj \

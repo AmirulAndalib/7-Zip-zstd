@@ -149,9 +149,14 @@ BROTLI_OBJS = \
   $O/br_utf8_util.obj \
 
 LIZARD_OBJS = \
-  $O/lizard_compress.obj \
-  $O/lizard_decompress.obj \
-  $O/lizard_frame.obj \
+  $O\lizard_compress.obj \
+  $O\lizard_decompress.obj \
+  $O\lizard_frame.obj \
+  $O\lz_entropy_common.obj \
+  $O\lz_fse_compress.obj \
+  $O\lz_fse_decompress.obj \
+  $O\lz_huf_compress.obj \
+  $O\lz_huf_decompress.obj \
 
 LZ4_OBJS = \
   $O\lz4.obj \

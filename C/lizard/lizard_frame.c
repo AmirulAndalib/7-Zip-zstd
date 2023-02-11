@@ -54,11 +54,10 @@ You can contact the author at :
 #include "lizard_compress.h"
 #include "lizard_decompress.h"
 #include "lizard_common.h"  /* LIZARD_DICT_SIZE */
+
 #define XXH_STATIC_LINKING_ONLY
 #include "../zstd/xxhash.h"
 #include <stdio.h>
-
-
 
 /* unoptimized version; solves endianess & alignment issues */
 static U32 LizardF_readLE32 (const void* src)
@@ -1022,7 +1021,7 @@ size_t LizardF_decompress(LizardF_decompressionContext_t decompressionContext,
             dctxPtr->tmpInSize = 0;
             dctxPtr->tmpInTarget = minFHSize;   /* minimum to attempt decode */
             dctxPtr->dStage = dstage_storeHeader;
-            /* pass-through */
+            /* fallthrough */
 
         case dstage_storeHeader:
             {   size_t sizeToCopy = dctxPtr->tmpInTarget - dctxPtr->tmpInSize;
@@ -1135,8 +1134,8 @@ size_t LizardF_decompress(LizardF_decompressionContext_t decompressionContext,
                 }
                 selectedIn = dctxPtr->tmpIn;
                 dctxPtr->dStage = dstage_decodeCBlock;
-                /* pass-through */
             }
+            /* fallthrough */
 
         case dstage_decodeCBlock:
             if ((size_t)(dstEnd-dstPtr) < dctxPtr->maxBlockSize)   /* not enough place into dst : decode into tmpOut */
